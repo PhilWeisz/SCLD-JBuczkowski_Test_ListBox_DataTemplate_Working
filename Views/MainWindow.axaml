@@ -1,0 +1,50 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:testLb.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="testLb.Views.MainWindow"
+        x:CompileBindings="False"
+
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="testLb">
+  <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+   <DockPanel Background="Green">
+    <ListBox x:Name="Test" DockPanel.Dock="Top" Background="#7F7F7F" MinWidth="500" MinHeight="500"  ItemsSource="{Binding DViewModels}" >
+      <ListBox.ItemTemplate>
+        <DataTemplate x:DataType="vm:DViewModel">
+         
+            <StackPanel>
+
+            <TextBlock 
+                       Margin="5, 0, 0, 0"
+                       TextTrimming="WordEllipsis"
+                       VerticalAlignment="Center"
+                       Text="{Binding Name}" />
+
+            <Border BorderBrush="Black" BorderThickness="2">
+             <StackPanel>
+
+              <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True" Width="30" Height="30" />
+             </StackPanel>
+            </Border>
+            </StackPanel>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+  </DockPanel>
+
+
+</Window>
+
+      <!--<ListBox.Items>
+        <ListBoxItem>One</ListBoxItem>
+        <ListBoxItem>Two</ListBoxItem>
+      </ListBox.Items>-->
